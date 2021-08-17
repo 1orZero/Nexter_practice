@@ -13,11 +13,18 @@
     padding-top: 4rem;
 
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr;
-    grid-template-columns: max-content;
+    grid-template-rows: 1fr min-content minmax(max-content, 6rem) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
     grid-gap: 1.5rem;
     align-items: start;
     justify-content: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: full-start / -1;
+    }
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem;
+    }
 
     .btn {
         justify-self: center;
@@ -43,16 +50,17 @@
             height: 1px;
             display: block;
             background-color: currentColor;
-
         }
     }
     &__seenon-logos {
-        // display: grid;
-        // grid-template-columns: repeat(4,1fr);
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+        justify-items: center;
+        align-items: center;
         img {
-            height: 2.5rem;
+            max-height: 2.5rem;
+            max-width: 100%;
             filter: brightness(70%);
         }
     }
